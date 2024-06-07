@@ -77,15 +77,14 @@ function checkValid(){
     let valid1 = new Array();
     for (let i = 0; i < 15; i++){
         for (let j = 0; j < 15; j++){
+            if(board[i][j] != "0" && board[i][j] == boardCache[i][j])
+            valid.push(3924893); //stupid
             if(board[i][j] != boardCache[i][j]){
-                console.log("wee");
                 valid.push(i);
                 valid1.push(j);
             }
         }
     }
-    console.log(valid1);
-    console.log(valid);
     if (allEqual(valid) != allEqual(valid1)){
         return true;
     }
