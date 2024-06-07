@@ -22,10 +22,12 @@ player2.tileRack = grabTiles(player2.tileRack);
 
 
 var win = 0;
-while (win == 0) {
+/*while (win == 0) {
 
 
-  }
+}*/
+
+var input = prompt("bebap");
 
 function shuffleTiles(array) {
     for (var i = array.length - 1; i > 0; i--) {
@@ -51,7 +53,20 @@ function grabTiles(array) {
     return array;
 }
 
-//function playTiles()
+function playTiles(input){
+    let check = Array.from(input);
+    for (v = 0; v < check.length; v+=3){
+        for (i = 0; i < 3; i ++){
+        if (i == 1)
+        new x = check[v];
+        if (i == 2)
+        new y = check[v];
+        if (i == 0)
+        new c = check[v];
+        }
+    board[x][y] = c;
+    }
+}
 
 function checkValid(){
     let valid = new Array();
