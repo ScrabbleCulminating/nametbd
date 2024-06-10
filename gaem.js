@@ -7,12 +7,11 @@ allEqual = arr => arr.every(val => val === arr[0]);
 
 var player1 = {
     tileRack: new Array(8),
-    points: 0,
-    selected: null
+    points: 0
     //tileRack: ["A", "A", "A", "A", null, null, "A", "A"] Debug Code for grabbing Tiles
 };
 var player2 = Object.create(player1);
-
+var selected = "0";
 tileBag = shuffleTiles(tileBag);
 
 player1.tileRack = grabTiles(player1.tileRack);
@@ -95,7 +94,9 @@ function checkValid(){
 
 function moveTiles(button){
     console.log(button);
-    //board[button.charAt(0)][button.charAt(1)] = selected;
+    const index = button; 
+    const position = index.split(" ");
+    board[position[0]][position[1]] = selected;
     const elem = document.getElementById(button);
     elem.textContent = "hehehehaw";
 
