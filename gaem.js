@@ -29,7 +29,12 @@ var win = 0;
 //playTiles(prompt("bebap"));
 console.log(board);
 console.log(checkValid());
+console.log(player1.tileRack);
 
+/*for (i=0;i<8;i++){
+    const elem = document.getElementById("pt"+(i+1));
+    elem.textContent = player1.tileRack[i];
+}*/
 
 function shuffleTiles(array) {
     for (var i = array.length - 1; i > 0; i--) {

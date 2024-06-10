@@ -63,17 +63,23 @@
 
       </script>
       <div class="grid-container2" id="rak">
-        <button class="grid-item" id="pt1"></button>
-        <button class="grid-item" id="pt2"></button>
-        <button class="grid-item" id="pt3"></button>
-        <button class="grid-item" id="pt4"></button>
-        <button class="grid-item" id="pt5"></button>
-        <button class="grid-item" id="pt6"></button>
-        <button class="grid-item" id="pt7"></button>
-        <button class="grid-item" id="pt8"></button>
+        <button class="grid-item" id="pt1"textContent = " "></button>
+        <button class="grid-item" id="pt2"textContent = " "></button>
+        <button class="grid-item" id="pt3"textContent = " "></button>
+        <button class="grid-item" id="pt4"textContent = " "></button>
+        <button class="grid-item" id="pt5"textContent = " "></button>
+        <button class="grid-item" id="pt6"textContent = " "></button>
+        <button class="grid-item" id="pt7"textContent = " "></button>
+        <button class="grid-item" id="pt8"textContent = " "></button>
         
 
       </div>
+      <script>
+        for (i=0;i<8;i++){
+        const elem = document.getElementById("pt"+(i+1));
+        elem.textContent = player1.tileRack[i];
+        }
+        </script>
     </div>
     <h2>Player 1's Turn</h2>
     <h3>Time left 3:00</h3>
