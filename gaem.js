@@ -99,5 +99,4 @@ function moveTiles(button){
     board[position[0]][position[1]] = selected;
     const elem = document.getElementById(button);
     elem.textContent = "hehehehaw";
-
 }
