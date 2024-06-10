@@ -27,7 +27,7 @@ var win = 0;
 
 
 
-playTiles(prompt("bebap"));
+//playTiles(prompt("bebap"));
 console.log(board);
 console.log(checkValid());
 
@@ -94,7 +94,8 @@ function checkValid(){
 }
 
 function moveTiles(button){
-    board[button.charAt(0)][button.charAt(1)] = selected;
+    console.log(button);
+    //board[button.charAt(0)][button.charAt(1)] = selected;
     const elem = document.getElementById(button);
     elem.textContent = "hehehehaw";
 

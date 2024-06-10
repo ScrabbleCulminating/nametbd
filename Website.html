@@ -35,7 +35,7 @@
 </head>
 <div>
     <h1>Pass & Play</h1>
-    <!--<script src="gaem.js"></script>-->
+    <script src="gaem.js"></script>
     <div class='grid-container' id="board">
         <script>
         // Define the grid size
@@ -54,11 +54,13 @@
             gridItem.className = 'grid-item';
             gridItem.id = i+''+j;
             gridItem.textContent = ' ';
+            gridItem.onclick = function(){moveTiles(this.id)};
     
             // Append the grid item to the grid container
             gridContainer.appendChild(gridItem);
           }
         }
+
       </script>
       <div class="grid-container2" id="rak">
         <button class="grid-item" id="pt1"></button>
