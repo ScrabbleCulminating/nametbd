@@ -11,11 +11,19 @@
         }
         .grid-container{
             display: grid;
-            grid-template-columns: repeat(15, 35px);
-            gap: 20px;
-            padding: 25px;
+            grid-template-columns: repeat(15, 25px);
+            gap: 10px;
+            padding: 10px;
             background-color: purple;
-            width: 800px;
+            width: 520px;
+        }
+        .grid-container2{
+            display: grid;
+            grid-template-columns: repeat(8, 25px);
+            gap: 10px;
+            padding: 10px;
+            background-color: purple;
+            width: 500px;
         }
         .grid-item{background-color: white; color: black;
             text-align: center;
@@ -42,15 +50,28 @@
         for (let i = 0; i < rows; i++) {
             for (let j = 0; j < columns; j++) {
             // Create a grid item element
-            const gridItem = document.createElement('div');
+            const gridItem = document.createElement('button');
             gridItem.className = 'grid-item';
-            gridItem.textContent = '0';
+            gridItem.id = i+''+j;
+            gridItem.textContent = ' ';
     
             // Append the grid item to the grid container
             gridContainer.appendChild(gridItem);
           }
         }
       </script>
+      <div class="grid-container2" id="rak">
+        <button class="grid-item" id="pt1"></button>
+        <button class="grid-item" id="pt2"></button>
+        <button class="grid-item" id="pt3"></button>
+        <button class="grid-item" id="pt4"></button>
+        <button class="grid-item" id="pt5"></button>
+        <button class="grid-item" id="pt6"></button>
+        <button class="grid-item" id="pt7"></button>
+        <button class="grid-item" id="pt8"></button>
+        
+
+      </div>
     </div>
     <h2>Player 1's Turn</h2>
     <h3>Time left 3:00</h3>
