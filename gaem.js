@@ -11,7 +11,10 @@ var player1 = {
     //tileRack: ["A", "A", "A", "A", null, null, "A", "A"] Debug Code for grabbing Tiles
 };
 var player2 = Object.create(player1);
-var selected = "0";
+var selected = {
+    tile: "0",
+    rackPos: new Array()
+}
 tileBag = shuffleTiles(tileBag);
 
 player1.tileRack = grabTiles(player1.tileRack);
@@ -98,10 +101,38 @@ function checkValid(){
 }
 
 function moveTiles(button){
-    console.log(button);
+    //console.log(button);
     const index = button; 
     const position = index.split(" ");
-    board[position[0]][position[1]] = selected;
+    board[position[0]][position[1]] = selected.tile;
+    
     const elem = document.getElementById(button);
-    elem.textContent = "hehehehaw";
+    const elemR = document.getElementById(selected.rackPos[0]);    
+    elemR.textContent = "";
+    elemR.style.backgroundColor = 'white';
+
+    let elemTemp = elem.textContent;
+    elem.textContent = selected.tile;
+    selected.tile = elemTemp;
+    document.getElementById("Selected").textContent = selected.tile;
+}
+function putBack(button){
+    const index = button;
+    let elem = document.getElementById(button);
+    let elemR = document.getElementById(selected.rackPos[0]);
+    elemR.textContent = elem.textContent; 
+    selected.rackPos.splice(0, 1);
+    const position = index.split(" ");
+    board[position[0]][position[1]] = "0"; 
+    elem.textContent = "";
+    selected.tile = "";
+    document.getElementById("Selected").textContent = selected.tile;  
+}
+function select(button){
+    const elem = document.getElementById(button);
+    selected.tile = elem.textContent;
+    elem.style.backgroundColor = 'red';
+    selected.rackPos.splice(0, 0, button);
+    document.getElementById("Selected").textContent = selected.tile;
+    console.log(selected.rackPos);
 }
