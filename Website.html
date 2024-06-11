@@ -26,10 +26,9 @@
             width: 500px;
         }
         .grid-item{background-color: white; color: black;
-            text-align: center;
-            padding: 5px;
+            padding: 4px;
             height: 25px;
-            width: 25;
+            width: 25px;
         }
     </style>
 </head>
@@ -38,6 +37,8 @@
     <script src="gaem.js"></script>
     <div class='grid-container' id="board">
         <script>
+        //define grid layout
+        var board = [["3W","","2L","","","","","3W","","","","","2L","","3W"], ["","2L","","","","","3L","","3L","","","","","2L",""], ["2L","","","","","2W","","","","2W","","","","","2L"], ["","","","","2W","","","","","","2W","","","",""], ["","","","2W","","","","","","","","2W","","",""], ["","","2W","","","","2L","","2L","","","","2W","",""], ["","3L","","","","2L","","","","2L","","","","3L",""], ["3W","","","","","","","2W","","","","","","","3W"], ["","3L","","","","2L","","","","2L","","","","3L",""], ["","","2W","","","","2L","","2L","","","","2W","",""], ["","","","2W","","","","","","","","2W","","",""], ["","","","","2W","","","","","","2W","","","",""], ["2L","","","","","2W","","","","2W","","","","","2L"], ["","2L","","","","","3L","","3L","","","","","2L",""], ["3W","","2L","","","","","3W","","","","","2L","","3W"]];
         // Define the grid size
         const rows = 15;
         const columns = 15;
@@ -53,7 +54,17 @@
             const gridItem = document.createElement('button');
             gridItem.className = 'grid-item';
             gridItem.id = i+' '+j;
-            gridItem.textContent = ' ';
+            gridItem.textContent = board[i][j];
+            switch(board[i][j]){
+                case "3W": gridItem.style.backgroundColor = 'red';
+                break;
+                case "3L": gridItem.style.backgroundColor = 'cyan';
+                break;
+                case "2L": gridItem.style.backgroundColor = 'lightblue';
+                break;
+                case "2W": gridItem.style.backgroundColor = 'pink';
+                break;
+            }
             gridItem.onclick = function(){moveTiles(this.id)};
     
             // Append the grid item to the grid container
