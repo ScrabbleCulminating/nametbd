@@ -95,7 +95,11 @@
         </script>
     </div>
     <h2>Player 1's Turn</h2>
-    <h3>Time left 3:00</h3>
+    <script> 
+        var timeLeft = 300;
+        var timer = document.createElement('div');
+        timer.textContent = "time left = "+(timeLeft/60)+':'+(timeLeft%60);
+    </script>
     <footer>A collaboration between Tete Soto and Delilah Adams</footer>
 </body>
 </html>
