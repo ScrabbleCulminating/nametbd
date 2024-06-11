@@ -103,5 +103,11 @@ function moveTiles(button){
     const position = index.split(" ");
     board[position[0]][position[1]] = selected;
     const elem = document.getElementById(button);
-    elem.textContent = "hehehehaw";
+    elem.textContent = selected;
+}
+
+function select(button){
+    const elem = document.getElementById(button);
+    selected = elem.textContent;
+    
 }

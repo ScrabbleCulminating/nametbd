@@ -78,6 +78,7 @@
         for (i=0;i<8;i++){
         const elem = document.getElementById("pt"+(i+1));
         elem.textContent = player1.tileRack[i];
+        elem.onclick = function(){select(this.id)};
         }
         </script>
     </div>
