@@ -55,6 +55,7 @@
             gridItem.id = i+' '+j;
             gridItem.textContent = ' ';
             gridItem.onclick = function(){moveTiles(this.id)};
+            gridItem.ondblclick = function(){putBack(this.id)};
     
             // Append the grid item to the grid container
             gridContainer.appendChild(gridItem);
@@ -71,7 +72,7 @@
         <button class="grid-item" id="pt6"textContent = " "></button>
         <button class="grid-item" id="pt7"textContent = " "></button>
         <button class="grid-item" id="pt8"textContent = " "></button>
-        
+        <button class="grid-item" id="Selected" textContent = " "></button>
 
       </div>
       <script>
