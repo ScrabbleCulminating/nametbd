@@ -38,44 +38,23 @@
     <div class='grid-container' id="board">
         <script>
         //define grid layout
-        var board = [["3W","","2L","","","","","3W","","","","","2L","","3W"], ["","2L","","","","","3L","","3L","","","","","2L",""], ["2L","","","","","2W","","","","2W","","","","","2L"], ["","","","","2W","","","","","","2W","","","",""], ["","","","2W","","","","","","","","2W","","",""], ["","","2W","","","","2L","","2L","","","","2W","",""], ["","3L","","","","2L","","","","2L","","","","3L",""], ["3W","","","","","","","2W","","","","","","","3W"], ["","3L","","","","2L","","","","2L","","","","3L",""], ["","","2W","","","","2L","","2L","","","","2W","",""], ["","","","2W","","","","","","","","2W","","",""], ["","","","","2W","","","","","","2W","","","",""], ["2L","","","","","2W","","","","2W","","","","","2L"], ["","2L","","","","","3L","","3L","","","","","2L",""], ["3W","","2L","","","","","3W","","","","","2L","","3W"]];
         // Define the grid size
         const rows = 15;
         const columns = 15;
     
         // Get the grid container element
-        const gridContainer = document.getElementById('board');
+        let gridContainer = document.getElementById('board');
+        let gridContainer2 = document.getElementById('rak');
         
     
         // Create the grid dynamically
-        for (let i = 0; i < rows; i++) {
-            for (let j = 0; j < columns; j++) {
-            // Create a grid item element
-            const gridItem = document.createElement('button');
-            gridItem.className = 'grid-item';
-            gridItem.id = i+' '+j;
-            gridItem.textContent = board[i][j];
-            switch(board[i][j]){
-                case "3W": gridItem.style.backgroundColor = 'red';
-                break;
-                case "3L": gridItem.style.backgroundColor = 'cyan';
-                break;
-                case "2L": gridItem.style.backgroundColor = 'lightblue';
-                break;
-                case "2W": gridItem.style.backgroundColor = 'pink';
-                break;
-            }
-            gridItem.onclick = function(){moveTiles(this.id)};
-            gridItem.ondblclick = function(){putBack(this.id)};
-    
-            // Append the grid item to the grid container
-            gridContainer.appendChild(gridItem);
-          }
-        }
+        
 
       </script>
+      </div>
       <div class="grid-container2" id="rak">
-        <button class="grid-item" id="pt1"textContent = " "></button>
+        
+        <!--<button class="grid-item" id="pt1"textContent = " "></button>
         <button class="grid-item" id="pt2"textContent = " "></button>
         <button class="grid-item" id="pt3"textContent = " "></button>
         <button class="grid-item" id="pt4"textContent = " "></button>
@@ -84,14 +63,10 @@
         <button class="grid-item" id="pt7"textContent = " "></button>
         <button class="grid-item" id="pt8"textContent = " "></button>
         <button class="grid-item" id="Selected" textContent = " "></button>
+        <button onclick="reset()">Reset</button>-->
+        <script>
 
-      </div>
-      <script>
-        for (i=0;i<8;i++){
-        const elem = document.getElementById("pt"+(i+1));
-        elem.textContent = player1.tileRack[i];
-        elem.onclick = function(){select(this.id)};
-        }
+        boardLoad();
         </script>
     </div>
     <h2>Player 1's Turn</h2>
