@@ -15,6 +15,9 @@ var selected = {
     tile: "0",
     rackPos: new Array()
 }
+
+var whosTurn = 1;
+
 tileBag = shuffleTiles(tileBag);
 
 player1.tileRack = grabTiles(player1.tileRack);

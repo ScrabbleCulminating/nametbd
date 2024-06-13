@@ -94,11 +94,18 @@
         }
         </script>
     </div>
-    <h2>Player 1's Turn</h2>
+    
     <script> 
         var timeLeft = 300;
-        var timer = document.createElement('div');
-        timer.textContent = "time left = "+(timeLeft/60)+':'+(timeLeft%60);
+        setInterval(dincTime,1000);
+        var timer = document.createElement('h2');
+        document.body.appendChild(timer);
+        function dincTime(){
+            timeLeft = timeLeft-1;
+        if ((timeLeft%60)>9) {timer.textContent = "time left = "+(Math.floor(timeLeft/60))+':'+(timeLeft%60);}
+        else {timer.textContent = "time left = "+(Math.floor(timeLeft/60))+':0'+(timeLeft%60);}
+        }
+        
     </script>
     <footer>A collaboration between Tete Soto and Delilah Adams</footer>
 </body>
