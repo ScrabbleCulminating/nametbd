@@ -14,8 +14,9 @@ var player1 = {
 var player2 = Object.create(player1);
 var selected = {
     tile: "0",
-    rackPos: new Array()
+    cache: ""
 }
+
 
 var whosTurn = 1;
 
@@ -31,6 +32,7 @@ function play() {
 
     checkValid();
     points();
+
 }
 
 
@@ -135,44 +137,32 @@ function checkValid(){
 }
 
 function moveTiles(button){
-    //console.log(button);
     const index = button; 
     const position = index.split(" ");
     
-    
     const elem = document.getElementById(button);
-    const elemR = document.getElementById(selected.rackPos[0]);    
-    elemR.textContent = "";
-    elemR.style.backgroundColor = 'white';
     
     let elemTemp = elem.textContent;
-    board[position[0]][position[1]] = selected.tile;
+    selected.tile = 
+    //board[position[0]][position[1]] = selected.tile;
     console.log(board);
     console.log(boardCache);
-    //selected.tile = board[position[0]][position[1]];
-    elem.textContent = board[position[0]][position[1]];
-    selected.tile = elemTemp;
-    document.getElementById("Selected").textContent = selected.tile;
-}
-function putBack(button){
-    const index = button;
-    let elem = document.getElementById(button);
-    let elemR = document.getElementById(selected.rackPos[0]);
-    elemR.textContent = selected.tile; 
-    selected.rackPos.splice(0, 1);
-    const position = index.split(" ");
+
+
+    //if (position[0] == "r" || board[position[0]][position[1]] == boardCache[position[0]][position[1]]){
+        //select(button);
+    //}
     
-    elem.textContent = boardCache[position[0]][position[1]];
-    selected.tile = board[position[0]][position[1]];
-    document.getElementById("Selected").textContent = selected.tile;  
+    //selected.tile = board[position[0]][position[1]];
+    //elem.textContent = board[position[0]][position[1]];
 }
+
 function select(button){
     const elem = document.getElementById(button);
     selected.tile = elem.textContent;
     elem.style.backgroundColor = 'red';
-    selected.rackPos.splice(0, 0, button);
+    //selected.rackPos.splice(0, 0, button);
     document.getElementById("Selected").textContent = selected.tile;
-    console.log(selected.rackPos);
 }
 
 
@@ -209,13 +199,20 @@ function boardLoad(){
     for (i=0;i<8;i++){
         const rackItem = document.createElement('button');
         rackItem.className = 'grid-item';
-        rackItem.id = "r" + i;
+        rackItem.id = "r " + i;
         rackItem.textContent = player1.tileRack[i];
-        rackItem.onclick = function(){select(this.id)};
+        rackItem.onclick = function(){moveTiles(this.id)};
+        rackItem.oninput = function(){
+            const elem = document.getElementById(this.id);
+            const index = this.id; 
+            const position = index.split(" ");
+            elem.textContent = tileRack[position[1]];
+        };
         gridContainer2.appendChild(rackItem);
     }
     const selectb = document.createElement('button')
     selectb.className = "grid-item";
+    selectb.id = "Selected";
     gridContainer2.appendChild(selectb);
     gridContainer2.appendChild(document.createElement('button',{    textContent: "Reset"}))
 
@@ -225,3 +222,16 @@ function boardLoad(){
         elem.onclick = function(){select(this.id)};
     }*/
 }
+
+/*function putBack(button){
+    const index = button;
+    let elem = document.getElementById(button);
+    let elemR = document.getElementById(selected.rackPos[0]);
+    elemR.textContent = selected.tile; 
+    selected.rackPos.splice(0, 1);
+    const position = index.split(" ");
+    
+    elem.textContent = boardCache[position[0]][position[1]];
+    selected.tile = board[position[0]][position[1]];
+    document.getElementById("Selected").textContent = selected.tile;  
+}*/
