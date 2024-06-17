@@ -7,6 +7,7 @@ allEqual = arr => arr.every(val => val === arr[0]);
 
 var player1 = {
     tileRack: new Array(8),
+    cache: new Array(8),
     points: 0
     //tileRack: ["A", "A", "A", "A", null, null, "A", "A"] Debug Code for grabbing Tiles
 };
@@ -22,7 +23,8 @@ tileBag = shuffleTiles(tileBag);
 
 player1.tileRack = grabTiles(player1.tileRack);
 player2.tileRack = grabTiles(player2.tileRack);
-
+player1.cache = player1.tileRack;
+player2.cache = player2.tileRack;
 
 var win = 0;
 function play() {
@@ -36,7 +38,6 @@ function play() {
 console.log(board);
 console.log(checkValid());
 console.log(player1.tileRack);
-
 /*for (i=0;i<8;i++){
     const elem = document.getElementById("pt"+(i+1));
     elem.textContent = player1.tileRack[i];
@@ -145,7 +146,7 @@ function moveTiles(button){
     board[position[0]][position[1]] = selected.tile;
     
     //selected.tile = board[position[0]][position[1]];
-    elem.textContent = selected.tile;
+    elem.textContent = board[position[0]][position[1]];
     selected.tile = elemTemp;
     document.getElementById("Selected").textContent = selected.tile;
 }
@@ -153,7 +154,7 @@ function putBack(button){
     const index = button;
     let elem = document.getElementById(button);
     let elemR = document.getElementById(selected.rackPos[0]);
-    elemR.textContent = elem.textContent; 
+    elemR.textContent = selected.tile; 
     selected.rackPos.splice(0, 1);
     const position = index.split(" ");
     
@@ -168,4 +169,55 @@ function select(button){
     selected.rackPos.splice(0, 0, button);
     document.getElementById("Selected").textContent = selected.tile;
     console.log(selected.rackPos);
+}
+
+
+function boardLoad(){
+    const gridContainer = document.getElementById('board');
+    const gridContainer2 = document.getElementById('rak');
+    document.getElementById("board").innerHTML = "";
+    document.getElementById("rak").innerHTML = "";
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < columns; j++) {
+        // Create a grid item element
+        const gridItem = document.createElement('button');
+        gridItem.className = 'grid-item';
+        gridItem.id = i+' '+j;
+        gridItem.textContent = boardCache[i][j];
+        switch(boardCache[i][j]){
+            case "3W": gridItem.style.backgroundColor = 'red';
+            break;
+            case "3L": gridItem.style.backgroundColor = 'cyan';
+            break;
+            case "2L": gridItem.style.backgroundColor = 'lightblue';
+            break;
+            case "2W": gridItem.style.backgroundColor = 'pink';
+            break;
+        }
+        gridItem.onclick = function(){moveTiles(this.id)};
+        gridItem.ondblclick = function(){putBack(this.id)};
+
+        // Append the grid item to the grid container
+        gridContainer.appendChild(gridItem);
+        }
+    }
+    console.log(gridContainer2);
+    for (i=0;i<8;i++){
+        const rackItem = document.createElement('button');
+        rackItem.className = 'grid-item';
+        rackItem.id = "r" + i;
+        rackItem.textContent = player1.tileRack[i];
+        rackItem.onclick = function(){select(this.id)};
+        gridContainer2.appendChild(rackItem);
+    }
+    const selectb = document.createElement('button')
+    selectb.className = "grid-item";
+    gridContainer2.appendChild(selectb);
+    gridContainer2.appendChild(document.createElement('button',{    textContent: "Reset"}))
+
+    /*for (i=0;i<8;i++){
+        const elem = document.getElementById("r"+i);
+        elem.textContent = player1.tileRack[i];
+        elem.onclick = function(){select(this.id)};
+    }*/
 }
