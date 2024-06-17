@@ -146,6 +146,7 @@ function boardLoad(){
     const gridContainer = document.getElementById('board');
     const gridContainer2 = document.getElementById('rak');
     document.getElementById("board").innerHTML = "";
+    document.getElementById("rak").innerHTML = "";
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < columns; j++) {
         // Create a grid item element
