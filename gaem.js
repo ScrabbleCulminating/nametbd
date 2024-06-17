@@ -68,9 +68,10 @@ function points() {
                     if (board[i][v] != "0" && board[i][v] != "2L" && board[i][v] != "2W" && board[i][v] != "3L" && board[i][v] != "3W"){
                         word += board[i][v];
                     }
-                    words.push(word);
+                    
                 }
             }
+            words.push(word);   
             if (board[j][i] != boardCache[j][i]){
                 let word = "";
                 for (v=0;v<15;v++){
@@ -78,9 +79,10 @@ function points() {
                         word += board[j][v];
                     }
                 }
-                words.push(word);
             }
+            words.push(word);
         }   
+        
     }
     words = words.filter((wordl) => wordl.length > 1);
     console.log(words);
