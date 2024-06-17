@@ -28,8 +28,9 @@ player2.cache = player2.tileRack;
 
 var win = 0;
 function play() {
+
     checkValid();
-    
+    points();
 }
 
 
@@ -63,25 +64,25 @@ function points() {
         for (j=0;j<15;j++){
             if (board[i][j] != boardCache[i][j]){
                 let word = "";
-                for (j=0;j<15;j++){
-                    if (board[i][j] != "0"){
-                        word += board[i][j];
+                for (v=0;v<15;v++){
+                    if (board[i][v] != "0" && board[i][v] != "2L" && board[i][v] != "2W" && board[i][v] != "3L" && board[i][v] != "3W"){
+                        word += board[i][v];
                     }
                     words.push(word);
                 }
             }
             if (board[j][i] != boardCache[j][i]){
                 let word = "";
-                for (j=0;j<15;j++){
-                    if (board[i][j] != "0"){
-                        word += board[i][j];
+                for (v=0;v<15;v++){
+                    if (board[j][v] != "0" && board[j][v] != "2L" && board[j][v] != "2W" && board[j][v] != "3L" && board[j][v] != "3W"){
+                        word += board[j][v];
                     }
                 }
                 words.push(word);
             }
         }   
     }
-    words = words.filter((wordl) => word.length > 1);
+    words = words.filter((wordl) => wordl.length > 1);
     console.log(words);
 }
 function grabTiles(array) {
@@ -144,7 +145,8 @@ function moveTiles(button){
     
     let elemTemp = elem.textContent;
     board[position[0]][position[1]] = selected.tile;
-    
+    console.log(board);
+    console.log(boardCache);
     //selected.tile = board[position[0]][position[1]];
     elem.textContent = board[position[0]][position[1]];
     selected.tile = elemTemp;
