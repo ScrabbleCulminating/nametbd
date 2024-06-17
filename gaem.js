@@ -25,10 +25,10 @@ player2.tileRack = grabTiles(player2.tileRack);
 
 
 var win = 0;
-/*while (win == 0) {
-
-
-}*/
+function play() {
+    checkValid();
+    
+}
 
 
 
@@ -56,6 +56,33 @@ function shuffleTiles(array) {
     return array;
 }
 
+function points() {
+    let words = new Array();
+    for (i =0; i<15;i++){
+        for (j=0;j<15;j++){
+            if (board[i][j] != boardCache[i][j]){
+                let word = "";
+                for (j=0;j<15;j++){
+                    if (board[i][j] != "0"){
+                        word += board[i][j];
+                    }
+                    words.push(word);
+                }
+            }
+            if (board[j][i] != boardCache[j][i]){
+                let word = "";
+                for (j=0;j<15;j++){
+                    if (board[i][j] != "0"){
+                        word += board[i][j];
+                    }
+                }
+                words.push(word);
+            }
+        }   
+    }
+    words = words.filter((wordl) => word.length > 1);
+    console.log(words);
+}
 function grabTiles(array) {
     for(var i = 0; i < 8; i++){
         if (array[i] == null){
